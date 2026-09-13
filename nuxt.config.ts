@@ -1,12 +1,26 @@
 const DEFAULT_SITE_URL = 'https://syscraft.dev'
+const PREVIEW_SITE_URL = 'https://syscraft.tailz.dev'
 
-const siteUrl = (
-  process.env.NUXT_PUBLIC_SITE_URL
-  || process.env.NUXT_SITE_URL
-  || process.env.CF_PAGES_URL
-  || process.env.DEPLOY_PRIME_URL
-  || DEFAULT_SITE_URL
-).replace(/\/+$/, '')
+function resolveSiteUrl() {
+  const explicit = (process.env.NUXT_PUBLIC_SITE_URL || process.env.NUXT_SITE_URL || '').replace(/\/+$/, '')
+  if (explicit) {
+    return explicit
+  }
+
+  const hostedOn = [
+    process.env.CF_PAGES_URL,
+    process.env.DEPLOY_PRIME_URL
+  ].filter(Boolean).join(' ')
+  if (hostedOn.includes('syscraft-aot.pages.dev') || hostedOn.includes('syscraft.tailz.dev')) {
+    return PREVIEW_SITE_URL
+  }
+
+  return DEFAULT_SITE_URL
+}
+
+const siteUrl = resolveSiteUrl()
+process.env.NUXT_SITE_URL = siteUrl
+process.env.NUXT_PUBLIC_SITE_URL = siteUrl
 
 export default defineNuxtConfig({
   modules: [
