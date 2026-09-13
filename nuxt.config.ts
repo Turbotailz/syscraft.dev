@@ -51,16 +51,6 @@ export default defineNuxtConfig({
     }
   },
 
-  routeRules: {
-    '/en/starter-server/': { redirect: '/en/starter-server' },
-    '/en/getting-players/': { redirect: '/en/getting-players' },
-    '/en/server-software/': { redirect: '/en/server-software' },
-    '/en/recommended-plugins/': { redirect: '/en/recommended-plugins' },
-    '/en/server-security/': { redirect: '/en/server-security' },
-    '/en/server-hosting/': { redirect: '/en/server-hosting' },
-    '/en/server-performance/': { redirect: '/en/server-performance' }
-  },
-
   eslint: {
     config: {
       stylistic: {
