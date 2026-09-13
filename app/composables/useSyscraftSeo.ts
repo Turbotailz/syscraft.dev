@@ -1,12 +1,22 @@
 import type { UseSeoMetaInput } from '@unhead/vue'
 
-export const SITE_URL = 'https://syscraft.dev'
+const DEFAULT_SITE_URL = 'https://syscraft.dev'
 
-export function canonicalUrl(path: string) {
-  if (path === '/') {
-    return `${SITE_URL}/`
+export function useSiteUrl() {
+  const runtime = useRuntimeConfig()
+  const fromRuntime = String(runtime.public.siteUrl || '').replace(/\/+$/, '')
+  if (fromRuntime) {
+    return fromRuntime
   }
-  return `${SITE_URL}${path.replace(/\/$/, '')}/`
+  const site = useSiteConfig()
+  return String(site.url || DEFAULT_SITE_URL).replace(/\/+$/, '')
+}
+
+export function canonicalUrl(path: string, siteUrl = useSiteUrl()) {
+  if (path === '/') {
+    return `${siteUrl}/`
+  }
+  return `${siteUrl}${path.replace(/\/$/, '')}/`
 }
 
 export function useSyscraftSeo(opts: {

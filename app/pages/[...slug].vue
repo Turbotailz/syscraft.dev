@@ -43,7 +43,7 @@ useSyscraftSeo({
     isPartOf: {
       '@type': 'WebSite',
       name: 'Syscraft',
-      url: SITE_URL
+      url: useSiteUrl()
     }
   }
 })

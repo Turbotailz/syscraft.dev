@@ -1,3 +1,13 @@
+const DEFAULT_SITE_URL = 'https://syscraft.dev'
+
+const siteUrl = (
+  process.env.NUXT_PUBLIC_SITE_URL
+  || process.env.NUXT_SITE_URL
+  || process.env.CF_PAGES_URL
+  || process.env.DEPLOY_PRIME_URL
+  || DEFAULT_SITE_URL
+).replace(/\/+$/, '')
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -15,7 +25,13 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   site: {
-    url: 'https://syscraft.dev'
+    url: siteUrl
+  },
+
+  runtimeConfig: {
+    public: {
+      siteUrl
+    }
   },
 
   content: {
@@ -66,7 +82,7 @@ export default defineNuxtConfig({
   },
 
   llms: {
-    domain: 'https://syscraft.dev',
+    domain: siteUrl,
     title: 'Syscraft',
     description: 'Guides for Minecraft server admins, developers, and hosts.',
     full: {

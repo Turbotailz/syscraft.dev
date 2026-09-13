@@ -21,6 +21,16 @@ pnpm dev
 
 Guides live in `content/` (`1.starter-server.md` → `/starter-server`, etc.). Homepage is `content/index.md`. Old `/en/...` URLs 301 to the same slug without `en`.
 
+## Site URL
+
+Canonicals, JSON-LD, and OG image URLs use one build-time value:
+
+| Env | Default | Purpose |
+| --- | --- | --- |
+| `NUXT_PUBLIC_SITE_URL` | `https://syscraft.dev` | Also accepted as `NUXT_SITE_URL`. Cloudflare Pages falls back to `CF_PAGES_URL` when unset. Preview: `https://syscraft.tailz.dev`. |
+
+Set it on the Pages project before building. Local: copy `.env.example` to `.env`.
+
 ## Deploy
 
 ```bash

@@ -8,6 +8,7 @@ const { data: docs } = await useAsyncData('home-guides', () => queryCollection('
 
 const title = page.value.seo?.title || page.value.title || 'Syscraft'
 const description = page.value.seo?.description || page.value.description || 'A community for Minecraft server admins, developers, and hosts.'
+const siteUrl = useSiteUrl()
 
 const guideSections = computed(() => {
   const pages = docs.value || []
@@ -35,8 +36,8 @@ useSyscraftSeo({
     {
       '@type': 'Organization',
       name: 'Syscraft',
-      url: `${SITE_URL}/`,
-      logo: `${SITE_URL}/syscraft-logo.png`,
+      url: `${siteUrl}/`,
+      logo: `${siteUrl}/syscraft-logo.png`,
       sameAs: [
         'https://discord.gg/Dx6SSkx',
         'https://reddit.com/r/syscraft',
@@ -46,7 +47,7 @@ useSyscraftSeo({
     {
       '@type': 'WebSite',
       name: 'Syscraft',
-      url: `${SITE_URL}/`,
+      url: `${siteUrl}/`,
       description
     }
   ]
