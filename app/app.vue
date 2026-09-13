@@ -11,10 +11,12 @@ const { data: files } = useLazyAsyncData('search', () => queryCollectionSearchSe
 
 useHead({
   meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'theme-color', content: '#0ea5e9' }
   ],
   link: [
-    { rel: 'icon', href: '/favicon.gif', type: 'image/gif' }
+    { rel: 'icon', href: '/favicon.gif', type: 'image/gif' },
+    { rel: 'sitemap', href: '/sitemap.xml', type: 'application/xml' }
   ],
   htmlAttrs: {
     lang: 'en'

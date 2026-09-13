@@ -19,8 +19,8 @@
     "@nuxt/image": "^2.1.0",
     "@nuxt/ui": "^4.11.0",
     "@nuxtjs/mdc": "^0.23.1",
-    "@vueuse/core": "^14.4.0",
     "@takumi-rs/core": "^2.13.6",
+    "@vueuse/core": "^14.4.0",
     "minimark": "^0.2.0",
     "nuxt": "^4.5.2",
     "nuxt-llms": "0.2.0",
@@ -33,6 +33,7 @@
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
     "eslint": "^10.10.0",
+    "nuxtseo-layer-devtools": "^5.3.16",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.11",
     "wrangler": "^4.37.0"

@@ -80,6 +80,11 @@ export default defineNuxtConfig({
   },
 
   ogImage: {
-    zeroRuntime: true
+    zeroRuntime: true,
+    defaults: {
+      alt: 'Syscraft',
+      width: 1200,
+      height: 630
+    }
   }
 })

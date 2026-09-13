@@ -9,6 +9,20 @@ export default defineAppConfig({
         root: 'border-t border-default',
         left: 'text-sm text-muted'
       }
+    },
+    contentNavigation: {
+      slots: {
+        linkTitle: 'truncate'
+      }
+    },
+    pageHeader: {
+      slots: {
+        root: 'relative border-b border-default py-8 min-w-0',
+        headline: 'mb-2.5 text-sm font-semibold text-primary flex items-center gap-1.5 pr-28 sm:pr-32',
+        wrapper: 'flex flex-col gap-4 min-w-0',
+        title: 'text-xl sm:text-2xl lg:text-3xl font-bold text-highlighted whitespace-nowrap',
+        links: 'absolute top-8 end-0 flex flex-wrap items-center gap-1.5'
+      }
     }
   },
   seo: {
@@ -73,7 +87,7 @@ export default defineAppConfig({
         target: '_blank'
       }, {
         icon: 'i-simple-icons-github',
-        label: 'syscraft-mc on GitHub',
+        label: 'GitHub',
         to: 'https://github.com/syscraft-mc',
         target: '_blank'
       }]

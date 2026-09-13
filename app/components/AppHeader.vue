@@ -31,7 +31,7 @@ const { header } = useAppConfig()
 
       <span
         v-if="header?.title"
-        class="font-semibold"
+        class="font-mono uppercase tracking-[0.04em]"
       >
         {{ header.title }}
       </span>

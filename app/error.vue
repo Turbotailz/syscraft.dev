@@ -11,9 +11,12 @@ useHead({
   }
 })
 
-useSeoMeta({
+useSyscraftSeo({
   title: 'Page not found',
-  description: 'We are sorry but this page could not be found.'
+  description: 'This page could not be found.',
+  path: '/404',
+  noIndex: true,
+  eyebrow: 'Error'
 })
 
 const { data: rawNavigation } = await useAsyncData('navigation', () => queryCollectionNavigation('docs'))
