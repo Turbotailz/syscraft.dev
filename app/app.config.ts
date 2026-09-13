@@ -17,11 +17,10 @@ export default defineAppConfig({
     },
     pageHeader: {
       slots: {
-        root: 'relative border-b border-default py-8 min-w-0',
-        headline: 'mb-2.5 text-sm font-semibold text-primary flex items-center gap-1.5 pr-28 sm:pr-32',
+        root: 'border-b border-default py-8 min-w-0',
+        headline: 'mb-2.5 text-sm font-semibold text-primary flex items-center gap-1.5',
         wrapper: 'flex flex-col gap-4 min-w-0',
-        title: 'text-xl sm:text-2xl lg:text-3xl font-bold text-highlighted whitespace-nowrap',
-        links: 'absolute top-8 end-0 flex flex-wrap items-center gap-1.5'
+        title: 'text-xl sm:text-2xl lg:text-3xl font-bold text-highlighted whitespace-nowrap'
       }
     }
   },

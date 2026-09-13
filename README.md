@@ -19,7 +19,7 @@ pnpm dev
 
 ## Content
 
-Guides live in `content/en/`. Keep existing URLs (`/en/starter-server`, etc.). Homepage is `content/index.md`.
+Guides live in `content/` (`1.starter-server.md` → `/starter-server`, etc.). Homepage is `content/index.md`. Old `/en/...` URLs 301 to the same slug without `en`.
 
 ## Deploy
 

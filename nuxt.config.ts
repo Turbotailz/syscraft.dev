@@ -32,6 +32,11 @@ export default defineNuxtConfig({
     }
   },
 
+  routeRules: {
+    '/en': { redirect: { to: '/', statusCode: 301 } },
+    '/en/**': { redirect: { to: '/**', statusCode: 301 } }
+  },
+
   experimental: {
     asyncContext: true
   },
@@ -71,10 +76,7 @@ export default defineNuxtConfig({
     sections: [
       {
         title: 'Guides',
-        contentCollection: 'docs',
-        contentFilters: [
-          { field: 'path', operator: 'LIKE', value: '/en/%' }
-        ]
+        contentCollection: 'docs'
       }
     ]
   },

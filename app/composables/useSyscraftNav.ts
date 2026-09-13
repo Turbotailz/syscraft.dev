@@ -1,26 +1,26 @@
 import type { ContentNavigationItem } from '@nuxt/content'
 
 const ADMIN_PATHS = [
-  '/en/starter-server',
-  '/en/getting-players',
-  '/en/server-software',
-  '/en/recommended-plugins',
-  '/en/server-security'
+  '/starter-server',
+  '/getting-players',
+  '/server-software',
+  '/recommended-plugins',
+  '/server-security'
 ]
 
 const HOST_PATHS = [
-  '/en/server-hosting',
-  '/en/server-performance'
+  '/server-hosting',
+  '/server-performance'
 ]
 
 const NAV_TITLES: Record<string, string> = {
-  '/en/starter-server': 'Starter Server',
-  '/en/getting-players': 'Getting Players',
-  '/en/server-software': 'Server Software',
-  '/en/recommended-plugins': 'Recommended Plugins',
-  '/en/server-security': 'Server Security',
-  '/en/server-hosting': 'Choosing a Host',
-  '/en/server-performance': 'Server Performance'
+  '/starter-server': 'Starter Server',
+  '/getting-players': 'Getting Players',
+  '/server-software': 'Server Software',
+  '/recommended-plugins': 'Recommended Plugins',
+  '/server-security': 'Server Security',
+  '/server-hosting': 'Choosing a Host',
+  '/server-performance': 'Server Performance'
 }
 
 export const GUIDE_SECTIONS = [
@@ -37,13 +37,13 @@ export const GUIDE_SECTIONS = [
 ] as const
 
 export const GUIDE_ICONS: Record<string, string> = {
-  '/en/starter-server': 'i-lucide-rocket',
-  '/en/getting-players': 'i-lucide-users',
-  '/en/server-software': 'i-lucide-boxes',
-  '/en/recommended-plugins': 'i-lucide-puzzle',
-  '/en/server-security': 'i-lucide-shield-check',
-  '/en/server-hosting': 'i-lucide-cloud',
-  '/en/server-performance': 'i-lucide-gauge'
+  '/starter-server': 'i-lucide-rocket',
+  '/getting-players': 'i-lucide-users',
+  '/server-software': 'i-lucide-boxes',
+  '/recommended-plugins': 'i-lucide-puzzle',
+  '/server-security': 'i-lucide-shield-check',
+  '/server-hosting': 'i-lucide-cloud',
+  '/server-performance': 'i-lucide-gauge'
 }
 
 export function navTitleFor(path: string, fallback?: string) {
@@ -80,12 +80,12 @@ export function groupDocsNavigation(items: ContentNavigationItem[] | null | unde
   return [
     {
       title: 'Admin',
-      path: '/en/starter-server',
+      path: '/starter-server',
       children: pick(ADMIN_PATHS)
     },
     {
       title: 'Host',
-      path: '/en/server-hosting',
+      path: '/server-hosting',
       children: pick(HOST_PATHS)
     }
   ]

@@ -97,7 +97,7 @@ const sectionUi = {
 
       <template #links>
         <UButton
-          to="/en/starter-server"
+          to="/starter-server"
           size="xl"
           trailing-icon="i-lucide-arrow-right"
         >

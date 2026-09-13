@@ -9,7 +9,8 @@ export default defineContentConfig({
     docs: defineCollection({
       type: 'page',
       source: {
-        include: 'en/**'
+        include: '*.md',
+        exclude: ['index.md']
       },
       schema: z.object({
         section: z.string().optional(),
