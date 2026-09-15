@@ -1,5 +1,9 @@
+import { fileURLToPath } from 'node:url'
+import { contentEditUrl, contentFileContributors, contentFileMtime, contentFileUpdatedAt, contentRelative, contentWorkingTreeAuthor } from './config/content-git'
+
 const DEFAULT_SITE_URL = 'https://syscraft.dev'
 const PREVIEW_SITE_URL = 'https://syscraft.tailz.dev'
+const repoRoot = fileURLToPath(new URL('.', import.meta.url))
 
 function resolveSiteUrl() {
   const explicit = (process.env.NUXT_PUBLIC_SITE_URL || process.env.NUXT_SITE_URL || '').replace(/\/+$/, '')
@@ -69,6 +73,26 @@ export default defineNuxtConfig({
 
   experimental: {
     asyncContext: true
+  },
+
+  hooks: {
+    'content:file:afterParse'(ctx) {
+      if (ctx.collection.name !== 'docs') {
+        return
+      }
+      const relative = contentRelative(ctx.file.path)
+      const updatedAt = contentFileUpdatedAt(repoRoot, ctx.file.path) || contentFileMtime(repoRoot, ctx.file.path)
+      if (updatedAt) {
+        ctx.content.updatedAt = updatedAt
+      }
+      if (relative) {
+        ctx.content.editUrl = contentEditUrl(relative)
+        const pageContributors = contentFileContributors(repoRoot, ctx.file.path)
+        ctx.content.contributors = pageContributors.length
+          ? pageContributors
+          : contentWorkingTreeAuthor(repoRoot)
+      }
+    }
   },
 
   compatibilityDate: '2026-06-30',

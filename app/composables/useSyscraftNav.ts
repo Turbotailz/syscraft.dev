@@ -5,12 +5,22 @@ const ADMIN_PATHS = [
   '/getting-players',
   '/server-software',
   '/recommended-plugins',
-  '/server-security'
+  '/server-security',
+  '/server-networks',
+  '/permissions',
+  '/advertising'
 ]
 
 const HOST_PATHS = [
   '/server-hosting',
-  '/server-performance'
+  '/server-performance',
+  '/how-much-ram',
+  '/server-management'
+]
+
+const MORE_PATHS = [
+  '/resources',
+  '/new-server-checklist'
 ]
 
 const NAV_TITLES: Record<string, string> = {
@@ -19,8 +29,15 @@ const NAV_TITLES: Record<string, string> = {
   '/server-software': 'Server Software',
   '/recommended-plugins': 'Recommended Plugins',
   '/server-security': 'Server Security',
+  '/server-networks': 'Server Networks',
+  '/permissions': 'Permissions',
+  '/advertising': 'Advertising',
   '/server-hosting': 'Choosing a Host',
-  '/server-performance': 'Server Performance'
+  '/server-performance': 'Server Performance',
+  '/how-much-ram': 'How Much RAM',
+  '/server-management': 'Management Tools',
+  '/resources': 'Resources',
+  '/new-server-checklist': 'New Server Checklist'
 }
 
 export const GUIDE_SECTIONS = [
@@ -33,6 +50,11 @@ export const GUIDE_SECTIONS = [
     title: 'Host',
     description: 'Choose hardware and keep TPS stable.',
     paths: HOST_PATHS
+  },
+  {
+    title: 'More',
+    description: 'External guides and a checklist for a new server.',
+    paths: MORE_PATHS
   }
 ] as const
 
@@ -42,8 +64,15 @@ export const GUIDE_ICONS: Record<string, string> = {
   '/server-software': 'i-lucide-boxes',
   '/recommended-plugins': 'i-lucide-puzzle',
   '/server-security': 'i-lucide-shield-check',
+  '/server-networks': 'i-lucide-share-2',
+  '/permissions': 'i-lucide-key',
+  '/advertising': 'i-lucide-megaphone',
   '/server-hosting': 'i-lucide-cloud',
-  '/server-performance': 'i-lucide-gauge'
+  '/server-performance': 'i-lucide-gauge',
+  '/how-much-ram': 'i-lucide-memory-stick',
+  '/server-management': 'i-lucide-panel-top',
+  '/resources': 'i-lucide-library',
+  '/new-server-checklist': 'i-lucide-list-checks'
 }
 
 export function navTitleFor(path: string, fallback?: string) {
@@ -87,6 +116,11 @@ export function groupDocsNavigation(items: ContentNavigationItem[] | null | unde
       title: 'Host',
       path: '/server-hosting',
       children: pick(HOST_PATHS)
+    },
+    {
+      title: 'More',
+      path: '/resources',
+      children: pick(MORE_PATHS)
     }
   ]
 }

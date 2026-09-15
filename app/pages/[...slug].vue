@@ -48,38 +48,14 @@ useSyscraftSeo({
   }
 })
 
-const links = computed(() => {
-  const links = []
-  if (toc?.bottom?.edit) {
-    links.push({
-      icon: 'i-lucide-external-link',
-      label: 'Edit this page',
-      to: `${toc.bottom.edit}/${page?.value?.stem}.${page?.value?.extension}`,
-      target: '_blank'
-    })
-  }
-
-  return [...links, ...(toc?.bottom?.links || [])].filter(Boolean)
-})
-
 const hasToc = computed(() => Boolean(page.value?.body?.toc?.links?.length))
 
-const pageUi = computed(() => {
-  if (hasToc.value) {
-    return {
-      root: 'flex flex-col lg:grid lg:grid-cols-[minmax(10rem,12rem)_minmax(0,1fr)_minmax(14rem,18rem)] xl:grid-cols-[minmax(11rem,13rem)_minmax(0,1fr)_minmax(16rem,20rem)] lg:gap-6 xl:gap-8',
-      left: 'lg:col-auto min-w-0',
-      center: 'lg:col-auto min-w-0',
-      right: 'lg:col-auto min-w-0 order-first lg:order-last'
-    }
-  }
-
-  return {
-    root: 'flex flex-col lg:grid lg:grid-cols-[minmax(10rem,12rem)_minmax(0,1fr)] xl:grid-cols-[minmax(11rem,13rem)_minmax(0,1fr)] lg:gap-6 xl:gap-8',
-    left: 'lg:col-auto min-w-0',
-    center: 'lg:col-auto min-w-0'
-  }
-})
+const pageUi = {
+  root: 'flex flex-col lg:grid lg:grid-cols-[minmax(10rem,12rem)_minmax(0,1fr)_minmax(16rem,20rem)] xl:grid-cols-[minmax(11rem,13rem)_minmax(0,1fr)_minmax(16rem,22rem)] lg:gap-6 xl:gap-8',
+  left: 'lg:col-auto min-w-0',
+  center: 'lg:col-auto min-w-0',
+  right: 'lg:col-auto min-w-0 order-first lg:order-last'
+}
 </script>
 
 <template>
@@ -112,37 +88,33 @@ const pageUi = computed(() => {
       <UContentSurround :surround="surround" />
     </UPageBody>
 
-    <template
-      v-if="page?.body?.toc?.links?.length"
-      #right
-    >
+    <template #right>
       <UContentToc
+        v-if="hasToc"
         highlight
         highlight-variant="circuit"
         :title="toc?.title"
         :links="page.body?.toc?.links"
         :ui="{ linkText: 'truncate' }"
       >
-        <template
-          v-if="toc?.bottom"
-          #bottom
-        >
-          <div
-            class="hidden lg:block space-y-6"
-            :class="{ 'mt-6!': page.body?.toc?.links?.length }"
-          >
-            <USeparator
-              v-if="page.body?.toc?.links?.length"
-              type="dashed"
-            />
-
-            <UPageLinks
-              :title="toc.bottom.title"
-              :links="links"
-            />
-          </div>
+        <template #bottom>
+          <PageContributors
+            :contributors="page.contributors"
+            :updated-at="page.updatedAt"
+            :edit-url="page.editUrl"
+          />
         </template>
       </UContentToc>
+      <aside
+        v-else
+        class="flex flex-col gap-6 lg:sticky lg:top-(--ui-header-height) py-8"
+      >
+        <PageContributors
+          :contributors="page.contributors"
+          :updated-at="page.updatedAt"
+          :edit-url="page.editUrl"
+        />
+      </aside>
     </template>
   </UPage>
 </template>
